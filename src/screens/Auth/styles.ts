@@ -1,4 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { View } from 'react-native';
 
-export const Container = styled(View)``;
+export const Container = styled(View)`
+  flex: 1;
+  margin-top: 46px;
+`;

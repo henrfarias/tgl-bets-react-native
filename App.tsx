@@ -7,6 +7,7 @@ import {
 } from '@expo-google-fonts/roboto';
 
 import Routes from './src/routes/index.routes';
+import Auth from './src/screens/Auth';
 
 const App: React.FC = () => {
   let [fontsLoaded] = useFonts({
@@ -18,7 +19,7 @@ const App: React.FC = () => {
     return <AppLoading />
   }
 
-  return <Routes />;
+  return <Auth />;
 };
 
 export default App;

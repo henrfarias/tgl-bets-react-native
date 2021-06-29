@@ -1,4 +1,4 @@
-const theme = {
+export const theme = {
   colors: {
     primary: '#B5C401',
     strongText: '#707070',
@@ -6,6 +6,7 @@ const theme = {
     background: '#F7F7F7',
     card: '#FFF',
     button: '#C1C1C1',
+    border: '#EBEBEB'
   },
   tipography: {
     text: 'Roboto_400Regular',
