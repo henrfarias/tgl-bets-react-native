@@ -2,11 +2,13 @@ import styled from 'styled-components/native';
 import { Animated, View, Text, TextInput } from 'react-native';
 import { theme } from '../../global/theme';
 
-
+type Props = {
+  isFocused: boolean;
+};
 
 export const Container = styled(View)`
   position: relative;
-`; 
+`;
 
 export const Label = styled(Animated.Text)`
   position: absolute;
@@ -17,10 +19,10 @@ export const Label = styled(Animated.Text)`
   font-size: 15px;
 `;
 
-export const InputText = styled(TextInput)`
+export const InputText = styled(TextInput)<Props>`
   border-bottom-width: 2px;
-  border-bottom-color: ${theme.colors.border};
+  border-bottom-color: ${(props) =>
+    props.isFocused ? theme.colors.primary : theme.colors.border};
   height: 70.79px;
   padding-left: 26px;
 `;
-

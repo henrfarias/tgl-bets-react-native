@@ -6,15 +6,13 @@ import Logo from '../../components/Layout/Logo';
 import Login from '../../components/Login';
 import Register from '../../components/Register';
 import ForgotPassword from '../../components/ForgotPassword';
-import Footer from '../../components/Footer';
 
 export type authTypes = 'LOGIN' | 'REGISTER' | 'PASSWORD';
 
 const Auth: React.FC = () => {
-  const [authScreen, setAuthScreen] = useState<authTypes>('LOGIN');
+  const [authScreen, setAuthScreen] = useState<authTypes>('REGISTER');
 
   return (
-    <>
       <ScreenContainer>
         <Logo />
         <Container >
@@ -23,8 +21,6 @@ const Auth: React.FC = () => {
           {authScreen === 'PASSWORD' && <ForgotPassword />}
         </Container>
       </ScreenContainer>
-      <Footer />
-    </>
   );
 };
 

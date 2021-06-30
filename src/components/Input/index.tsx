@@ -14,8 +14,10 @@ type InputProps = TextInputProps & {
 const Input: React.FC<InputProps> = ({ children, label, ...rest }) => {
   const floatLabel = useRef(new Animated.Value(35)).current;
   const [isFilled, setIsFilled] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const focusHandler = () => {
+    setIsFocused(true);
     Animated.timing(floatLabel, {
       toValue: 15,
       duration: 200,
@@ -24,6 +26,7 @@ const Input: React.FC<InputProps> = ({ children, label, ...rest }) => {
   };
 
   const blurHandler = () => {
+    setIsFocused(false);
     if (!isFilled) {
       Animated.timing(floatLabel, {
         toValue: 35,
@@ -49,6 +52,7 @@ const Input: React.FC<InputProps> = ({ children, label, ...rest }) => {
         onFocus={focusHandler}
         onBlur={blurHandler}
         onChangeText={changeHandler}
+        isFocused={isFocused}
         {...rest}
       />
     </Container>
