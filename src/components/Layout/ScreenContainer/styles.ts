@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { theme } from '../../../global/theme'; 
 
-export const Container = styled(View)`
+export const Container = styled(ScrollView)`
   flex: 1;
   background-color: ${theme.colors.background};
   padding: 0 35px;

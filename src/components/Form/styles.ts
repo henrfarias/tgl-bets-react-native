@@ -9,7 +9,7 @@ export const Container = styled(View)`
 
 export const Title = styled(Text)`
   font-size: 35px;
-  font-family: ${theme.tipography.title};
+  font-family: ${theme.tipography.Ititle};
   color: ${theme.colors.strongText};
   margin-bottom: 26px;
 `;

@@ -1,19 +1,19 @@
 import styled from 'styled-components/native';
-import { View, Text, TextInput } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { Animated, View, Text, TextInput } from 'react-native';
 import { theme } from '../../global/theme';
+
+
 
 export const Container = styled(View)`
   position: relative;
 `; 
 
-export const Label = styled(Text)`
+export const Label = styled(Animated.Text)`
   position: absolute;
-  top: 50%;
   left: 26px;
   transform: translateY(-10px);
   color: ${theme.colors.text};
-  font-family: ${theme.tipography.title};
+  font-family: ${theme.tipography.Ititle};
   font-size: 15px;
 `;
 
@@ -24,4 +24,3 @@ export const InputText = styled(TextInput)`
   padding-left: 26px;
 `;
 
-export const Link = styled(BorderlessButton)``;

@@ -3,9 +3,12 @@ import { Container } from './styles';
 
 const ScreenContainer: React.FC = ({ children }) => {
   return (
-     <Container>
-       {children}
-     </Container>
+    <Container 
+      showsVerticalScrollIndicator={false}
+      automaticallyAdjustContentInsets={false} 
+    >
+      {children}
+    </Container>
   );
 }
 

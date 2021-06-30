@@ -3,13 +3,13 @@ import { View, Text } from 'react-native';
 import { theme } from '../../../global/theme';
 
 export const Container = styled(View)`
-  margin-top: 80px;
+  margin-top: 20px;
   align-items: center;
   justify-content: center;
 `;
 
 export const Title = styled(Text)`
-  font-family: ${theme.tipography.title}; 
+  font-family: ${theme.tipography.Ititle}; 
   font-size: 44px;
   color: ${theme.colors.strongText};
 `;

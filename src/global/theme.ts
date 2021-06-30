@@ -10,6 +10,8 @@ export const theme = {
   },
   tipography: {
     text: 'Roboto_400Regular',
-    title: 'Roboto_700Bold'
+    Itext: 'Roboto_400Regular_Italic',
+    title: 'Roboto_700Bold',
+    Ititle: 'Roboto_700Bold_Italic'
   }
 }
