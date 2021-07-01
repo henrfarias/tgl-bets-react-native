@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({ children, label, ...rest }) => {
     setIsFocused(true);
     Animated.timing(floatLabel, {
       toValue: 15,
-      duration: 200,
+      duration: 300,
       useNativeDriver: false,
     }).start();
   };

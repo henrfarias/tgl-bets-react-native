@@ -12,10 +12,11 @@ type ButtonProps = TouchableOpacityProps & {
 const SecondaryFormButton: React.FC<ButtonProps> = ({
   title,
   isBack = false,
+  ...rest
 }) => {
   return (
     <Container>
-      <Button>
+      <Button {...rest}>
         {isBack && (
           <AntDesign
             name='arrowleft'

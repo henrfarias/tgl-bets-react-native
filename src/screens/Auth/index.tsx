@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Container } from './styles';
+import { AuthScreenContext } from '../../contexts/AuthScreenContext';
 
 import ScreenContainer from '../../components/Layout/ScreenContainer';
 import Logo from '../../components/Layout/Logo';
@@ -7,11 +8,10 @@ import Login from '../../components/Login';
 import Register from '../../components/Register';
 import ForgotPassword from '../../components/ForgotPassword';
 
-export type authTypes = 'LOGIN' | 'REGISTER' | 'PASSWORD';
+
 
 const Auth: React.FC = () => {
-  const [authScreen, setAuthScreen] = useState<authTypes>('REGISTER');
-
+  const { authScreen } = useContext(AuthScreenContext);
   return (
       <ScreenContainer>
         <Logo />

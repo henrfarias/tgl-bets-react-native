@@ -10,6 +10,7 @@ import {
 
 import Routes from './src/routes/index.routes';
 import Auth from './src/screens/Auth';
+import { AuthScreenProvider } from './src/contexts/AuthScreenContext';
 
 const App: React.FC = () => {
   let [fontsLoaded] = useFonts({
@@ -23,7 +24,11 @@ const App: React.FC = () => {
     return <AppLoading />
   }
 
-  return <Auth />;
+  return (
+    <AuthScreenProvider>
+      <Auth />
+    </AuthScreenProvider>
+  );
 };
 
 export default App;
