@@ -14,7 +14,7 @@ export const ButtonContainer = styled(View)`
 
 export const MainButton = styled(RectButton)<any>`
   position: absolute;
-  top: -49px;
+  top: -35px;
   align-items: center;
   justify-content: center;
   width: 100px;

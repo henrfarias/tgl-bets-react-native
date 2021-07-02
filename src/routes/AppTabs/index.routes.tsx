@@ -1,5 +1,8 @@
 import React from 'react';
-import { createBottomTabNavigator, BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
+import {
+  createBottomTabNavigator,
+  BottomTabBarButtonProps,
+} from '@react-navigation/bottom-tabs';
 import { AppTabsParamsList } from '../../types/AppTabsParams';
 import { Ionicons } from '@expo/vector-icons';
 import { ButtonContainer, MainButton } from './styles';
@@ -9,6 +12,7 @@ import Home from '../../screens/Home';
 import Game from '../../screens/Game';
 import { theme } from '../../global/theme';
 import Account from '../../screens/Account';
+import TabButton from '../../components/TabButton';
 
 const { Navigator, Screen } = createBottomTabNavigator<AppTabsParamsList>();
 
@@ -16,17 +20,17 @@ const AppTabs: React.FC = () => {
   return (
     <Navigator
       tabBarOptions={{
-        labelStyle: {
-          paddingBottom: 13,
-          fontFamily: theme.tipography.Itext,
-          fontSize: 14,
-        },
+        activeTintColor: theme.colors.primary,
+        showLabel: false,
         style: {
           position: 'absolute',
           borderTopStartRadius: 20,
           borderTopEndRadius: 20,
+          height: 71.81,
         },
         tabStyle: {
+          justifyContent: 'center',
+          alignItems: 'center',
           borderTopStartRadius: 20,
           borderTopEndRadius: 20,
         },
@@ -34,7 +38,14 @@ const AppTabs: React.FC = () => {
     >
       <Screen
         options={{
-          tabBarIcon: () => <Ionicons name='home-outline' size={24} />,
+          tabBarIcon: ({ color, focused }) => (
+            <TabButton
+              iconName='home-outline'
+              label='Home'
+              color={color}
+              focused={focused}
+            />
+          ),
         }}
         name='Home'
         component={Home}
@@ -47,13 +58,26 @@ const AppTabs: React.FC = () => {
           tabBarButton: (props) => (
             <ButtonContainer>
               <MainButton {...props}>
-                <LogoSvg />
+                <LogoSvg style={{ borderRadius: 100, elevation: 10 }} />
               </MainButton>
             </ButtonContainer>
           ),
         }}
       />
-      <Screen name='Account' component={Account} />
+      <Screen
+        name='Account'
+        component={Account}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabButton
+              iconName='person-outline'
+              label='Account'
+              color={color}
+              focused={focused}
+            />
+          ),
+        }}
+      />
     </Navigator>
   );
 };
