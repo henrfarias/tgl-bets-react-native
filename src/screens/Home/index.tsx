@@ -1,9 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
-
+import { Container, Title } from './styles'
+import Header from '../../components/Header';
 const Home: React.FC = () => {
   return (
-     <View />
+     <Container>
+       <Header />
+       <Title>Home</Title>
+     </Container>
   );
 }
 

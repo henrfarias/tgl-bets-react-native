@@ -1,9 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
-
+import { Container, Title } from './styles'
 const Game: React.FC = () => {
   return (
-     <View />
+     <Container>
+       <Title>Game</Title>
+     </Container>
   );
 }
 

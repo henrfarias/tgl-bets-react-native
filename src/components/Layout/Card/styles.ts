@@ -7,6 +7,4 @@ export const Container = styled(Animated.View)`
   border-radius: 12px;
   background-color: ${theme.colors.card};
   overflow: hidden;
-  shadow-color: #000;
-  elevation: 10;
 `;
