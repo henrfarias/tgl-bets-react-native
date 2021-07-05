@@ -8,9 +8,11 @@ import {
   Roboto_700Bold_Italic
 } from '@expo-google-fonts/roboto';
 
+import store from './src/store';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { Provider } from 'react-redux';
 import Routes from './src/routes/index.routes';
-import Auth from './src/screens/Auth';
-import { AuthScreenProvider } from './src/contexts/AuthScreenContext';
+
 
 const App: React.FC = () => {
   let [fontsLoaded] = useFonts({
@@ -25,9 +27,11 @@ const App: React.FC = () => {
   }
 
   return (
-    <AuthScreenProvider>
-      <Routes />
-    </AuthScreenProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
+    </Provider>
   );
 };
 

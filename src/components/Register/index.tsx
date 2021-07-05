@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Container, ContainerButton } from './styles';
-import { AuthScreenContext } from '../../contexts/AuthScreenContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import Form from '../Form';
 import Input from '../Input';
@@ -8,7 +8,7 @@ import FormButton from '../FormButton';
 import SecondaryFormButton from '../SecondaryFormButton';
 
 const Register: React.FC = () => {
-  const { setAuthScreen } = useContext(AuthScreenContext);
+  const { setAuthScreen } = useContext(AuthContext);
   return (
     <Container>
       <Form title='Registration'>

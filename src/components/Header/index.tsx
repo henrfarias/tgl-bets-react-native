@@ -10,8 +10,12 @@ import {
   NavButton
 } from './styles';
 import { theme } from '../../global/theme';
+import { useAppDispatch } from '../../store/hooks';
+import { logout } from '../../store/reducers/bearer.reducer';
 
-const Header: React.FC = () => {
+const Header: React.FC = ({ children }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <StatusBar backgroundColor='transparent' barStyle='dark-content' />
@@ -21,13 +25,14 @@ const Header: React.FC = () => {
           <Decoration />
         </HomeButton>
         <NavContainer>
-        <NavButton>
-            <MaterialCommunityIcons
-              name='logout'
-              size={24}
-              color={theme.colors.button}
-            />
-          </NavButton>
+          {children}  
+          <NavButton onPress={() => dispatch(logout())}>
+              <MaterialCommunityIcons
+                name='logout'
+                size={24}
+                color={theme.colors.button}
+              />
+            </NavButton>
         </NavContainer>
       </Container>
     </>

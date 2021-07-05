@@ -5,10 +5,10 @@ import Form from '../Form';
 import Input from '../Input';
 import FormButton from '../FormButton';
 import SecondaryFormButton from '../SecondaryFormButton';
-import { AuthScreenContext } from '../../contexts/AuthScreenContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const ForgotPassword: React.FC = () => {
-  const { setAuthScreen } = useContext(AuthScreenContext);
+  const { setAuthScreen } = useContext(AuthContext);
 
   return (
     <Container>

@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  createBottomTabNavigator,
-  BottomTabBarButtonProps,
-} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AppTabsParamsList } from '../../types/AppTabsParams';
-import { Ionicons } from '@expo/vector-icons';
 import { ButtonContainer, MainButton } from './styles';
 
 import LogoSvg from '../../assets/icon.svg';
