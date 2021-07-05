@@ -13,11 +13,13 @@ import FormButton from '../FormButton';
 import SecondaryFormButton from '../SecondaryFormButton';
 import { IGame } from '../../types/IGames';
 import { IUser } from '../../types/IUser';
+import { userLoggedIn } from '../../store/reducers/user.reducer';
+import { loadGames } from '../../store/reducers/games.reducer';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setAuthScreen, setBearer } = useContext(AuthContext);
+  const { setAuthScreen } = useContext(AuthContext);
   const dispatch = useAppDispatch();
 
   const fetchLogin = async () => {
@@ -31,11 +33,13 @@ const Login: React.FC = () => {
       const fetchGames = await axios.get('/games');
       const { data }: { data: IGame[] } = fetchGames.data;
       const getUser = await axios.get('/users', {
-        headers: { Authorization : `Bearer ${token}`}
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       const userInfo: IUser = getUser.data;
 
+      dispatch(loadGames(data));
+      dispatch(userLoggedIn(userInfo));
       dispatch(isntLoading());
       dispatch(login(token));
     } catch (error) {
