@@ -6,7 +6,8 @@ export const theme = {
     background: '#F7F7F7',
     card: '#FFF',
     button: '#C1C1C1',
-    border: '#EBEBEB'
+    border: '#EBEBEB',
+    description: '#868686'
   },
   tipography: {
     text: 'Roboto_400Regular',
