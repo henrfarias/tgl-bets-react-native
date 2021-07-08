@@ -7,11 +7,13 @@ import { IGame } from '../../types/IGames';
 type ButtonProps = TouchableHighlightProps & {
   game: IGame;
   active?: boolean;
+  filter?: boolean;
 };
 
 const GameButton: React.FC<ButtonProps> = ({
   game,
   active = false,
+  filter = false,
   ...rest
 }) => {
   return (
@@ -22,7 +24,7 @@ const GameButton: React.FC<ButtonProps> = ({
       {...rest}
     >
       <ButtonContent>
-        {active && (
+        {active && filter && (
           <XIndicator>
             <Ionicons name='close' size={10} color='#FFF' />
           </XIndicator>

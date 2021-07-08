@@ -51,11 +51,14 @@ const AppTabs: React.FC = () => {
         component={Game}
         options={{
           tabBarLabel: '',
-          tabBarButton: (props) => (
+          tabBarIcon: ({ focused }) => (
+            <LogoSvg
+              style={{ borderRadius: 100, elevation: focused ? 0 : 3}}
+            />
+          ),
+          tabBarButton: ({ children, ...props }) => (
             <ButtonContainer>
-              <MainButton {...props}>
-                <LogoSvg style={{ borderRadius: 100, elevation: 10 }} />
-              </MainButton>
+              <MainButton {...props}>{children}</MainButton>
             </ButtonContainer>
           ),
         }}
