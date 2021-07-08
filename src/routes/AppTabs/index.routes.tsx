@@ -58,7 +58,7 @@ const AppTabs: React.FC = () => {
           ),
           tabBarButton: ({ children, ...props }) => (
             <ButtonContainer>
-              <MainButton {...props}>{children}</MainButton>
+              <MainButton {...props}  >{children}</MainButton>
             </ButtonContainer>
           ),
         }}

@@ -16,6 +16,7 @@ export const SubTitle = styled(Text)`
 
 export const Rule = styled(Text)`
   margin-top: 5px;
+  line-height: 20px;
   flex-direction: row;
   flex-wrap: wrap;
 `;

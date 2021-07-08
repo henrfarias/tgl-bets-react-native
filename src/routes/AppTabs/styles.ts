@@ -1,9 +1,6 @@
 import styled from 'styled-components/native';
 import { View } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
-import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
-
-type Props = BottomTabBarButtonProps
+import { BaseButton } from 'react-native-gesture-handler';
 
 export const ButtonContainer = styled(View)`
   position: relative;
@@ -12,7 +9,7 @@ export const ButtonContainer = styled(View)`
   flex: 1;
 `;
 
-export const MainButton = styled(RectButton)<any>`
+export const MainButton = styled(BaseButton)<any>`
   position: absolute;
   top: -35px;
   align-items: center;

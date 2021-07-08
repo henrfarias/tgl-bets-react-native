@@ -1,9 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Container, Number } from './styles';
 
-const GameNumber: React.FC = () => {
+type Props = {
+  index: number;
+}
+
+const GameNumber: React.FC<Props> = ({ index }) => {
   return (
-     <View />
+     <Container>
+       <Number>{`${index}`.padStart(2, '0')}</Number>
+     </Container>
   );
 }
 

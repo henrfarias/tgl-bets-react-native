@@ -7,7 +7,8 @@ export const theme = {
     card: '#FFF',
     button: '#C1C1C1',
     border: '#EBEBEB',
-    description: '#868686'
+    description: '#868686',
+    number: '#ADC0C4'
   },
   tipography: {
     text: 'Roboto_400Regular',

@@ -10,7 +10,7 @@ const Rules: React.FC = () => {
         <Strong>many numbers</Strong>
         <Normal> as you want up to a </Normal> 
         <Strong>maximum of 50</Strong>
-        <Normal>. Win by hitting </Normal>
+        <Normal>.{'\n'} Win by hitting </Normal>
         <Strong>15, 16, 17, 18, 19, 20</Strong>
         <Normal> or </Normal> <Strong>none</Strong>
         <Normal> of the </Normal>
