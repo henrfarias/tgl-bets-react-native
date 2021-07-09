@@ -15,6 +15,7 @@ export const Decoration = styled(View)`
   background-color: ${theme.colors.button};
   border-radius: 6px;
   margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 export const ContainerButtons = styled(ScrollView)`

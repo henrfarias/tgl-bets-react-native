@@ -3,11 +3,17 @@ import { Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/theme';
 
-export const Container = styled(RectButton)`
+type Props = {
+  checked: boolean;
+  color: string;
+};
+
+export const Container = styled(RectButton)<Props>`
   width: 59px;
   height: 59px;
   border-radius: 59px;
-  background-color: ${theme.colors.number};
+  background-color: ${({ color, checked }) =>
+    checked ? color : theme.colors.number};
   justify-content: center;
   align-items: center;
   margin-bottom: 9px;

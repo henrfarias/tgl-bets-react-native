@@ -3,6 +3,7 @@ import userReducer from './reducers/user.reducer';
 import gamesReducer from './reducers/games.reducer';
 import loadReducer from './reducers/load.reducer';
 import bearerReducer from './reducers/bearer.reducer';
+import currentGameReducer from './reducers/currentGame.reducer';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     games: gamesReducer,
     load: loadReducer,
     bearer: bearerReducer,
+    current_game: currentGameReducer,
   },
 });
 

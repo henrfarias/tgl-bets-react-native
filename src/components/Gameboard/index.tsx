@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, memo } from 'react';
 import { Container } from './styles';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 import GameNumber from '../GameNumber';
+import { numbersHandler } from '../../store/reducers/currentGame.reducer';
+import { useCallback } from 'react';
 
 const Gameboard: React.FC = () => {
-  const [numbers, setNumbers] = useState<number[]>([]);
+  const numbers: number[] = [];
+  const currentGame = useAppSelector((state) => state.current_game);
+  const dispatch = useAppDispatch();
 
   const grid = () => {
-    if(numbers.length != 0) {
+    if (numbers.length != 0) {
       return;
     }
     for (let i = 0; i < 50; i++) {
@@ -16,6 +21,7 @@ const Gameboard: React.FC = () => {
   };
   grid();
 
+  console.log('fui refeito?');
   return (
     <Container
       contentContainerStyle={{
@@ -27,9 +33,17 @@ const Gameboard: React.FC = () => {
         paddingBottom: 100,
       }}
     >
-      {numbers.map((number) => (<GameNumber key={`${number}n`} index={number} />))}
+      {numbers.map((number) => (
+        <GameNumber
+          key={`${number}n`}
+          index={number}
+          color={currentGame.game.color}
+          checked={currentGame.numbers.includes(number)}
+          onPress={() => dispatch(numbersHandler(number))}
+        />
+      ))}
     </Container>
   );
 };
 
-export default Gameboard;
+export default memo(Gameboard);
