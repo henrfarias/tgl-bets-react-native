@@ -15,23 +15,42 @@ const currentGameSlice = createSlice({
     },
     resetCurrentGame: (state) => (state = initialState),
     numbersHandler: (state, action: PayloadAction<number>) => {
-      if(!state.game.type) {
-        console.log('Escolha um game.')
+      if (!state.game.type) {
+        console.log('Escolha um game.');
         return;
       }
-      if(state.numbers.length === 20) {
+      if (state.numbers.length === 20) {
         console.log('Você marcou o máximo de números possíveis.');
         return;
       }
-      if(state.numbers.includes(action.payload)) {
-        state.numbers = state.numbers.filter((number) => number !== action.payload);
+      if (state.numbers.includes(action.payload)) {
+        state.numbers = state.numbers.filter(
+          (number) => number !== action.payload
+        );
         return;
       }
-			state.numbers.push(action.payload);
-		},
+      state.numbers.push(action.payload);
+    },
+    clearGame: (state) => {
+      state.numbers = initialState.numbers;
+    },
+    completeGame: (state) => {
+      const randomNumbers = [...state.numbers];
+      while (randomNumbers.length < 20) {
+        let number = Math.ceil(Math.random() * 50);
+        if (!randomNumbers.includes(number)) randomNumbers.push(number);
+      }
+      state.numbers = randomNumbers;
+    },
   },
 });
 
-export const { setCurrentGame, resetCurrentGame, numbersHandler } = currentGameSlice.actions;
+export const {
+  setCurrentGame,
+  resetCurrentGame,
+  numbersHandler,
+  clearGame,
+  completeGame,
+} = currentGameSlice.actions;
 
 export default currentGameSlice.reducer;
