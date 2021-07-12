@@ -4,6 +4,7 @@ import gamesReducer from './reducers/games.reducer';
 import loadReducer from './reducers/load.reducer';
 import bearerReducer from './reducers/bearer.reducer';
 import currentGameReducer from './reducers/currentGame.reducer';
+import cartReducer from './reducers/cart.reducer';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     load: loadReducer,
     bearer: bearerReducer,
     current_game: currentGameReducer,
+    cart: cartReducer
   },
 });
 

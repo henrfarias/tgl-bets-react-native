@@ -19,7 +19,10 @@ const currentGameSlice = createSlice({
         console.log('Escolha um game.');
         return;
       }
-      if (state.numbers.length === 20) {
+      if (
+        state.numbers.length === 20 &&
+        !state.numbers.includes(action.payload)
+      ) {
         console.log('Você marcou o máximo de números possíveis.');
         return;
       }

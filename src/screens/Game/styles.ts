@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { View, ScrollView } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/theme';
 
 export const Container = styled(View)`
@@ -23,3 +24,5 @@ export const ContainerButtons = styled(ScrollView)`
   width: 100%;
   margin-bottom: 4px;
 `;
+
+export const CartButton = styled(BorderlessButton)``;

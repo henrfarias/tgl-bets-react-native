@@ -5,6 +5,9 @@ import { theme } from '../../global/theme';
 
 export const ButtonContainer = styled(View)`
   height: 110px;
+  overflow: hidden;
+  border-bottom-right-radius: 13px;
+  border-bottom-left-radius: 13px;
 `;
 
 export const Button = styled(RectButton)`

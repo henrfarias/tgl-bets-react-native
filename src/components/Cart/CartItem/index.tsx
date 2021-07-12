@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, NumbersOfBet, MoreInfo, Title, Decoration } from './styles';
 import { ListRenderItemInfo } from 'react-native';
-import { IBet } from '../../types/IBet';
 
-import arrayToString from '../../helpers/arrayToString';
-import dateFormated from '../../helpers/dateFormated';
+import arrayToString from '../../../helpers/arrayToString';
+import dateFormated from '../../../helpers/dateFormated';
+import { PropsCart } from '../../../store/reducers/cart.reducer';
 
-type Props = ListRenderItemInfo<IBet>;
+type Props = ListRenderItemInfo<PropsCart>;
 
-const BetCart = (bet: Props) => {
+const CartItem: React.FC<Props> = (bet: Props) => {
   return (
     <Container>
       <Decoration color={bet.item.game.color} />
@@ -22,4 +22,4 @@ const BetCart = (bet: Props) => {
   );
 };
 
-export default BetCart;
+export default CartItem;

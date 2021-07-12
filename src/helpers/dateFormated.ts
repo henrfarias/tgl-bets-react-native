@@ -1,5 +1,4 @@
 const dateFormated = (ISOSString: string) => {
-
   const date = new Date(ISOSString.replace(' ', 'T'));
   const day = `${date.getDate()}`;
   const month = `${date.getMonth()}`;

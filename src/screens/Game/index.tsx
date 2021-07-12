@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Decoration, ContainerButtons } from './styles';
+import { Container, Decoration, ContainerButtons, CartButton } from './styles';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setCurrentGame } from '../../store/reducers/currentGame.reducer';
 
@@ -9,15 +10,28 @@ import Rules from '../../components/Rules';
 import GameButton from '../../components/GameButton';
 import Gameboard from '../../components/Gameboard';
 import GameControls from '../../components/GameControls';
+import { theme } from '../../global/theme';
+import { toggle } from '../../store/reducers/cart.reducer';
+import Cart from '../../components/Cart';
 
 const Game: React.FC = () => {
   const games = useAppSelector((state) => state.games);
+  const user = useAppSelector((state) => state.user);
   const currentGame = useAppSelector((state) => state.current_game);
+  const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   return (
     <Container>
-      <Header />
+      <Header>
+        <CartButton onPress={() => dispatch(toggle())}>
+          <MaterialCommunityIcons
+            name='cart-outline'
+            size={24}
+            color={theme.colors.primary}
+          />
+        </CartButton>
+      </Header>
       <Description title='New bet for lotomania' label='Choose a game'>
         <ContainerButtons horizontal showsHorizontalScrollIndicator={false}>
           {games.map((game) => {
@@ -36,6 +50,7 @@ const Game: React.FC = () => {
         <Decoration />
       </Description>
       <Gameboard />
+      {cart.openned && <Cart />}
     </Container>
   );
 };
