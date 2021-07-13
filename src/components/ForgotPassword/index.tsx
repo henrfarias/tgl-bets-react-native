@@ -16,6 +16,10 @@ const ForgotPassword: React.FC = () => {
 
   const forgotPasswordHandler = async () => {
     try {
+      if(!email.match(/^[A-Za-z][\w.\d]+@\w+\.\w{2,3}(?:\.\w{2})?$/g)) {
+        toast({ message: 'Email inválido.', intent: 'ERROR'});
+        return;
+      }
       await axios.post('/forgot-password', {
         email,
       });

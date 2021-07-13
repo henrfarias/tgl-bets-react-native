@@ -18,13 +18,13 @@ const Register: React.FC = () => {
 
   const registerHandler = async () => {
     if (password.trim().length < 6) {
-      console.log('error', 'Sua senha precisa ter 6 ou mais caracteres.');
+      toast({ message: 'Sua senha precisa ter 6 ou mais caracteres.', intent: 'ERROR' });
       return;
     } else if (
       username.trim() === '' ||
       !email.match(/^[A-Za-z][\w.\d]+@\w+\.\w{2,3}(?:\.\w{2})?$/g)
     ) {
-      console.log('error', 'Insira um email válido.');
+      toast({ message: 'Insira um email válido.', intent: 'ERROR' });
       return;
     }
 

@@ -8,6 +8,7 @@ import {
   Content,
   DeleteButton,
 } from './styles';
+import { LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import arrayToString from '../../../helpers/arrayToString';
 import dateFormated from '../../../helpers/dateFormated';

@@ -1,10 +1,16 @@
 import React, { useRef } from 'react';
-import { Animated } from 'react-native';
+import { LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Container } from './styles'; 
 
-const Card: React.FC = ({ children }) => {
-  const heightAnim = useRef(new Animated.Value(0)).current;
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
+const Card: React.FC = ({ children }) => {
+  LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
   return (
      <Container>
