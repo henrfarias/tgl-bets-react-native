@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { Animated, View, Text, TextInput } from 'react-native';
+import { Animated, View, TextInput } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import { theme } from '../../global/theme';
 
 type Props = {
@@ -25,4 +26,11 @@ export const InputText = styled(TextInput)<Props>`
     props.isFocused ? theme.colors.primary : theme.colors.border};
   height: 70.79px;
   padding-left: 26px;
+`;
+
+export const PassButton = styled(RectButton)`
+  position: absolute;
+  right: 20px;
+  top: 22px;
+  z-index: 10;
 `;

@@ -42,14 +42,26 @@ const Register: React.FC = () => {
   return (
     <Container>
       <Form title='Registration'>
-        <Input label='Name' onChangeText={setUsername} value={username} />
+        <Input
+          label='Name'
+          onChangeText={setUsername}
+          value={username}
+          filled={username}
+        />
         <Input
           label='Email'
           keyboardType='email-address'
           onChangeText={setEmail}
           value={email}
+          filled={email}
         />
-        <Input label='Password' onChangeText={setPassword} value={password} />
+        <Input
+          label='Password'
+          onChangeText={setPassword}
+          value={password}
+          filled={password}
+          password
+        />
         <FormButton title='Register' onPress={registerHandler} />
       </Form>
       <ContainerButton>

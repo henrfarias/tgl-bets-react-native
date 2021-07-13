@@ -8,9 +8,7 @@ const GamesSlice = createSlice({
   initialState,
   reducers: {
     loadGames: (state, action: PayloadAction<IGame[]>) => {
-      action.payload.forEach((game: IGame) => {
-        state.push(game);
-      });
+      return state = [...action.payload]
     },
   },
 });

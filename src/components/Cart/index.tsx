@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { toggle } from '../../store/reducers/cart.reducer';
+import { clearCart, toggle } from '../../store/reducers/cart.reducer';
 import {
   Overlay,
   Container,
@@ -43,6 +43,7 @@ const Cart: React.FC = () => {
       }, {
         headers: { 'Authorization': `Bearer ${bearer}` },
       });
+      dispatch(clearCart());
     } catch (error) {
       console.log(error.message);
     }

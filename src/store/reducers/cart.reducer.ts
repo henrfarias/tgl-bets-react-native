@@ -26,10 +26,11 @@ const CartSlice = createSlice({
       state.total = state.bets.reduce((acc, current) => {
         return acc = acc + current.current_price; 
       }, 0)
-    }
+    }, 
+    clearCart: (state) => state = initialState
   },
 });
 
-export const { toggle, addToCart } = CartSlice.actions;
+export const { toggle, addToCart, clearCart } = CartSlice.actions;
 
 export default CartSlice.reducer;

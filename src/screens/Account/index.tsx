@@ -1,20 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Container } from './styles';
+
+import Header from '../../components/Header';
+import Form from '../../components/Form';
+import { useAppSelector } from '../../store/hooks';
+import Input from '../../components/Input';
 
 const Account: React.FC = () => {
+  const user = useAppSelector((state) => state.user);
   return (
-     <View style={styles.container}>
-       <Text>Account</Text>
-     </View>
+    <>
+      <Header />
+      <Container>
+        <Form title='Account'>
+          <Input label='Email' />
+        </Form>
+      </Container>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
 
 export default Account;

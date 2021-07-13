@@ -56,13 +56,16 @@ const Login: React.FC = () => {
           textContentType='emailAddress'
           keyboardType='email-address'
           onChangeText={setEmail}
-          value={email}
+          value={email} 
+          filled={email}
         />
         <Input
           label='Password'
           textContentType='password'
           onChangeText={setPassword}
           value={password}
+          filled={password}
+          password
         />
         <Link onPress={() => setAuthScreen('PASSWORD')}>
           <Text>I forget my password</Text>
