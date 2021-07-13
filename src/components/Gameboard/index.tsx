@@ -1,15 +1,16 @@
-import React, { useState, memo } from 'react';
+import React, { memo } from 'react';
 import { Container } from './styles';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 import GameNumber from '../GameNumber';
 import { numbersHandler } from '../../store/reducers/currentGame.reducer';
-import { useCallback } from 'react';
+import { useToast } from 'react-native-styled-toast';
 
 const Gameboard: React.FC = () => {
   const numbers: number[] = [];
   const currentGame = useAppSelector((state) => state.current_game);
   const dispatch = useAppDispatch();
+  const { toast } = useToast();
 
   const grid = () => {
     if (numbers.length != 0) {
@@ -21,7 +22,24 @@ const Gameboard: React.FC = () => {
   };
   grid();
 
-  console.log('fui refeito?');
+  const markNumberHandler = (number: number) => {
+    if (!currentGame.game.type) {
+      toast({ message: 'Escolha um jogo.', intent: 'INFO' });
+      return;
+    }
+    if (
+      currentGame.numbers.length === 20 &&
+      !currentGame.numbers.includes(number)
+    ) {
+      toast({
+        message: 'Você marcou o máximo de números possíveis.',
+        intent: 'INFO',
+      });
+      return;
+    }
+    dispatch(numbersHandler(number));
+  };
+
   return (
     <Container
       contentContainerStyle={{
@@ -39,7 +57,7 @@ const Gameboard: React.FC = () => {
           index={number}
           color={currentGame.game.color}
           checked={currentGame.numbers.includes(number)}
-          onPress={() => dispatch(numbersHandler(number))}
+          onPress={() => markNumberHandler(number)}
         />
       ))}
     </Container>

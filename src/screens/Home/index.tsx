@@ -22,7 +22,6 @@ const Home: React.FC = () => {
 
   const filtersHandler = (type: string) => {
     if (currentFilters.includes(type)) {
-      console.log('está aqui.');      
       const attFilters = currentFilters.filter((filter) => filter !== type);      
       setCurrentFilters(attFilters);
       return;
@@ -39,7 +38,6 @@ const Home: React.FC = () => {
           headers: { Authorization: `Bearer ${bearer}` },
         });
         const userInfo: IUser = getUser.data;
-        console.log('refetch');
         dispatch(userLoggedIn(userInfo));
       };
 

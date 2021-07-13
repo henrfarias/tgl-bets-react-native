@@ -11,6 +11,7 @@ export const Container = styled(View)`
 
 export const BetsList = styled(FlatList as new () => FlatList<IBet>)`
   padding-top: 150px;
+  width: 100%;
 `;
 
 export const ContainerButtons = styled(ScrollView)`

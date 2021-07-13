@@ -16,7 +16,6 @@ import Cart from '../../components/Cart';
 
 const Game: React.FC = () => {
   const games = useAppSelector((state) => state.games);
-  const user = useAppSelector((state) => state.user);
   const currentGame = useAppSelector((state) => state.current_game);
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -32,7 +31,12 @@ const Game: React.FC = () => {
           />
         </CartButton>
       </Header>
-      <Description title='New bet for lotomania' label='Choose a game'>
+      <Description
+        title={`New bet ${
+          currentGame.game.type ? `for ${currentGame.game.type}` : ''
+        }`}
+        label='Choose a game'
+      >
         <ContainerButtons horizontal showsHorizontalScrollIndicator={false}>
           {games.map((game) => {
             const active = currentGame.game.type === game.type;

@@ -16,18 +16,21 @@ import {
 } from './styles';
 import { theme } from '../../global/theme';
 import { axios } from '../../services/axios';
+import { useToast } from 'react-native-styled-toast';
 
 import CartItem from './CartItem';
 import FormButton from '../FormButton';
+import EmptyCart from '../EmptyCart';
 
 const Cart: React.FC = () => {
   const { bets, total } = useAppSelector((state) => state.cart);
   const bearer = useAppSelector((state) => state.bearer);
   const dispatch = useAppDispatch();
+  const { toast } = useToast();
 
   const saveBetsOfCart = async () => {
     if (total < 30) {
-      console.log('Preço mínimo é de 30 reais');
+      toast({ message: 'Preço mínimo é de R$ 30,00', intent: 'INFO' });
       return;
     }
     try {
@@ -36,16 +39,22 @@ const Cart: React.FC = () => {
         numbers: JSON.stringify(bet.numbers),
         current_price: bet.current_price,
       }));
-      
-      console.log(bearer)
-      await axios.post('/bets', {
-        bets: savedBets
-      }, {
-        headers: { 'Authorization': `Bearer ${bearer}` },
-      });
+      await axios.post(
+        '/bets',
+        {
+          bets: savedBets,
+        },
+        {
+          headers: { Authorization: `Bearer ${bearer}` },
+        }
+      );
       dispatch(clearCart());
+      toast({ message: 'Apostas salvas com sucesso!' });
     } catch (error) {
-      console.log(error.message);
+      toast({
+        message: 'Algo deu errado ao comprar suas apostas',
+        intent: 'ERROR',
+      });
     }
   };
 
@@ -68,12 +77,15 @@ const Cart: React.FC = () => {
           />
           <Title>Cart</Title>
         </Header>
-        <CartList
-          data={bets}
-          renderItem={CartItem}
-          keyExtractor={(bet) => `${bet.created_at}`}
-          contentContainerStyle={{ paddingBottom: 30 }}
-        />
+        {bets.length ? (
+          <CartList>
+            {bets.map((bet) => (
+              <CartItem key={bet.created_at} bet={bet} />
+            ))}
+          </CartList>
+        ) : (
+          <EmptyCart />
+        )}
         <TotalContent>
           <TotalText>
             <Strong>Cart</Strong>

@@ -15,17 +15,6 @@ const currentGameSlice = createSlice({
     },
     resetCurrentGame: (state) => (state = initialState),
     numbersHandler: (state, action: PayloadAction<number>) => {
-      if (!state.game.type) {
-        console.log('Escolha um game.');
-        return;
-      }
-      if (
-        state.numbers.length === 20 &&
-        !state.numbers.includes(action.payload)
-      ) {
-        console.log('Você marcou o máximo de números possíveis.');
-        return;
-      }
       if (state.numbers.includes(action.payload)) {
         state.numbers = state.numbers.filter(
           (number) => number !== action.payload

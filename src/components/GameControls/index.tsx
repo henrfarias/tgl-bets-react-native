@@ -9,6 +9,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { theme } from '../../global/theme';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useToast } from 'react-native-styled-toast';
 
 import CurrentNumbers from '../CurrentNumbers';
 import {
@@ -21,9 +22,18 @@ import sortNumbers from '../../helpers/sortNumbers';
 const GameControls: React.FC = () => {
   const currentGame = useAppSelector((state) => state.current_game);
   const dispatch = useAppDispatch();
+  const { toast } = useToast();
 
   const addCartHandler = () => {
-    const numbers = [...currentGame.numbers]
+    if (currentGame.numbers.length < 20) {
+      toast({
+        message:
+          'Você ainda não completou o seu jogo. Marque 20 números para apostar.',
+        intent: 'INFO',
+      });
+      return;
+    }
+    const numbers = [...currentGame.numbers];
     const bet: PropsCart = {
       game: currentGame.game,
       numbers: sortNumbers(numbers),
@@ -32,6 +42,7 @@ const GameControls: React.FC = () => {
     };
     dispatch(addToCart(bet));
     dispatch(clearGame());
+    toast({ message: 'Adicionado ao carrinho.'});
   };
 
   return (

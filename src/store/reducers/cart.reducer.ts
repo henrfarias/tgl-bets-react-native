@@ -27,10 +27,16 @@ const CartSlice = createSlice({
         return acc = acc + current.current_price; 
       }, 0)
     }, 
-    clearCart: (state) => state = initialState
+    clearCart: (state) => state = initialState,
+    deleteItem: (state, action: PayloadAction<number>) => {
+      state.bets = state.bets.filter((bet, index) => index !== action.payload);
+      state.total = state.bets.reduce((acc, current) => {
+        return acc = acc + current.current_price; 
+      }, 0)
+    }
   },
 });
 
-export const { toggle, addToCart, clearCart } = CartSlice.actions;
+export const { toggle, addToCart, clearCart, deleteItem } = CartSlice.actions;
 
 export default CartSlice.reducer;

@@ -6,21 +6,23 @@ import { ISession } from '../../types/ISession';
 import { useAppDispatch } from '../../store/hooks';
 import { login } from '../../store/reducers/bearer.reducer';
 import { isLoading, isntLoading } from '../../store/reducers/load.reducer';
+import { IGame } from '../../types/IGames';
+import { IUser } from '../../types/IUser';
+import { userLoggedIn } from '../../store/reducers/user.reducer';
+import { loadGames } from '../../store/reducers/games.reducer';
+import { useToast } from 'react-native-styled-toast';
 
 import Form from '../Form';
 import Input from '../Input';
 import FormButton from '../FormButton';
 import SecondaryFormButton from '../SecondaryFormButton';
-import { IGame } from '../../types/IGames';
-import { IUser } from '../../types/IUser';
-import { userLoggedIn } from '../../store/reducers/user.reducer';
-import { loadGames } from '../../store/reducers/games.reducer';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { setAuthScreen } = useContext(AuthContext);
   const dispatch = useAppDispatch();
+  const { toast } = useToast();
 
   const fetchLogin = async () => {
     try {
@@ -43,7 +45,7 @@ const Login: React.FC = () => {
       dispatch(isntLoading());
       dispatch(login(token));
     } catch (error) {
-      console.log(error.message);
+      toast({ message: 'email ou senha inválido', intent: 'ERROR' })
       dispatch(isntLoading());
     }
   };

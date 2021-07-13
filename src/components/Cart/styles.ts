@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import { View, Text, FlatList } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { View, Text } from 'react-native';
+import { BorderlessButton, ScrollView } from 'react-native-gesture-handler';
 import { theme } from '../../global/theme';
 import { PropsCart } from '../../store/reducers/cart.reducer';
 
@@ -47,7 +47,7 @@ export const Title = styled(Text)`
   margin-left: 12px;
 `;
 
-export const CartList = styled(FlatList as new () => FlatList<PropsCart>)`
+export const CartList = styled(ScrollView)`
   padding: 0 25px;
 `;
 

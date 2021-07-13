@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
 import { theme } from '../../../global/theme';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 type Props ={ 
   color: string;
@@ -29,11 +30,21 @@ export const NumbersOfBet = styled(Text)`
   margin-bottom: 2px;
 `;
 
+export const Content = styled(View)`
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const MoreInfo = styled(Text)`
   font-family: ${theme.tipography.text};
   font-size: 12px;
   color: ${theme.colors.description};
   margin-bottom: 2px;
+`;
+
+export const DeleteButton = styled(BorderlessButton)`
 `;
 
 export const Title = styled(Text)<Props>`

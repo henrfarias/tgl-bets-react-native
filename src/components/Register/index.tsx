@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Container, ContainerButton } from './styles';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useToast } from 'react-native-styled-toast';
 
 import Form from '../Form';
 import Input from '../Input';
@@ -12,6 +13,7 @@ const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { toast } = useToast();
   const { setAuthScreen } = useContext(AuthContext);
 
   const registerHandler = async () => {
@@ -32,10 +34,13 @@ const Register: React.FC = () => {
         email,
         password,
       });
-      console.log('cadastrado com sucesso.');
+      toast({ message: 'cadastrado com sucesso.' });
       setAuthScreen('LOGIN');
     } catch (error) {
-      console.log(error.message);
+      toast({
+        message: 'Algo deu errado ao cadastrar este usuário.',
+        intent: 'ERROR',
+      });
     }
   };
 

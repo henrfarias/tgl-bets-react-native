@@ -1,4 +1,5 @@
 export const theme = {
+  space: [0, 4, 8, 12, 16, 20, 24, 32, 40, 48],
   colors: {
     primary: '#B5C401',
     strongText: '#707070',
@@ -8,7 +9,12 @@ export const theme = {
     button: '#C1C1C1',
     border: '#EBEBEB',
     description: '#868686',
-    number: '#ADC0C4'
+    number: '#ADC0C4',
+    muted: '#F0F1F3',
+    success: '#7DBE31',
+    error: '#FC0021',
+    info: '#87CEEB'
+
   },
   tipography: {
     text: 'Roboto_400Regular',
